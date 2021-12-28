@@ -10,6 +10,10 @@ const server = http.createServer(app);
 const io = require("socket.io")(server);
 app.use(express.static(__dirname + "/public"));
 
+app.get('/',function(req,res){
+  res.redirect('index.html')
+});
+
 io.sockets.on("error", e => console.log(e));
 io.sockets.on("connection", socket => {
   socket.on("broadcaster", () => {
